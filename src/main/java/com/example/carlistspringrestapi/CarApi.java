@@ -85,21 +85,21 @@ public class CarApi {
         }
     }
 
-//    //edit one field from car
-//    @PutMapping("/id{id}{field}")
-//    public ResponseEntity<Car> editFieldCar(@PathVariable Long id, @PathVariable String field) {
-//
-//        Optional<Car> first = carList.stream()
-//                .filter(carr -> carr.getId() == id)
-//                .findFirst();
-//        if (first.isPresent()) {
-//            carList.get(Math.toIntExact(id)).;
-//
-//            return new ResponseEntity<>(HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
+    //edit one field from car
+    @PutMapping("/id{id}/{color}")
+    public ResponseEntity<Car> editFieldCar(@PathVariable Long id, @PathVariable String color) {
+
+        Optional<Car> first = carList.stream()
+                .filter(carr -> carr.getId() == id)
+                .findFirst();
+        if (first.isPresent()) {
+            carList.get(id.intValue()).setColor(color);
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     //delete car
     @DeleteMapping("/{id}")
